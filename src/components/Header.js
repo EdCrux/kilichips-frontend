@@ -19,6 +19,8 @@ import HomeIcon from '@material-ui/icons/Home';
 import Badge from '@material-ui/core/Badge';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Hidden from '@material-ui/core/Hidden';
+import StoreItem from './StoreItem';
+import Button from '@material-ui/core/Button';
 
 const drawerWidth = 300;
 
@@ -77,6 +79,12 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginLeft: 0,
   },
+  logo: {
+    width: '150px'
+  },
+  sectionDesktop: {
+    display: 'flex'
+  },
 }));
 
 export default function Header() {
@@ -102,7 +110,7 @@ export default function Header() {
         })}
       >
         <Toolbar smDown>
-          <Hidden only='lg'>
+          <Hidden only = {[ 'md', 'lg', 'xl']}>
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -113,8 +121,22 @@ export default function Header() {
               <MenuIcon />
             </IconButton>
           </Hidden>
-          <img src={Logo} alt="logo" />
-
+          <Button variant="h6" >
+            <img src={Logo} alt="logo" className={classes.logo}/>
+          </Button>
+          <Hidden only={['xs','sm']}>
+            <div className={classes.sectionDesktop}>
+              <div>
+                <Button variant="h6" edge="start">
+                  <IconButton color="secondary">
+                    <HomeIcon/>
+                  </IconButton>
+                    Inicio
+                </Button>
+              </div>
+              <StoreItem />
+            </div>
+          </Hidden>
         </Toolbar>
       </AppBar>
       <Drawer

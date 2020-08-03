@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     top: '50%',
     left: '50%',
-    transform: 'translate(-180%, -0%)',
+    transform: 'translate(-160%, -0%)',
     '@media (max-width:768px)' : {
       textAlign: 'center',
       transform: 'translate(-50%, -20%)',
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '4rem',
       color: grey[50],  
     },
-    '@media (min-width:1024px)' : {
+    '@media (min-width:769px)' : {
       color: grey[900],
     }
   },
