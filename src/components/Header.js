@@ -2,28 +2,46 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 import Logo from '../images/Logo.svg';
+import HomeIcon from '@material-ui/icons/Home';
+import Badge from '@material-ui/core/Badge';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import Cart from './Cart';
+import Hidden from '@material-ui/core/Hidden';
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
-  logo: {
-    width: 150,
-    padding: 10,
+  appBar: {
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
   },
-  title: {
-    flexGrow: 3,
+  appBarShift: {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: drawerWidth,
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
   },
   hide: {
     display: 'none',
@@ -41,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-end',
   },
   content: {
     flexGrow: 1,
@@ -50,19 +68,18 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginRight: -drawerWidth,
+    marginLeft: -drawerWidth,
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    marginRight: 0,
+    marginLeft: 0,
   },
 }));
 
 export default function Header() {
-
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -84,20 +101,22 @@ export default function Header() {
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar>
-          <img src={Logo} alt='Kilichips-logo' className={classes.logo}/>
-          <IconButton
-            color="secondary"
-            aria-label="open drawer"
-            edge="end"
-            onClick={handleDrawerOpen}
-            className={clsx(open && classes.hide)}
-          >
-            <ShoppingCartIcon />
-          </IconButton>
+        <Toolbar smDown>
+          <Hidden only='lg'>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              className={clsx(classes.menuButton, open && classes.hide)}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Hidden>
+          <img src={Logo} alt="logo" />
+
         </Toolbar>
       </AppBar>
-
       <Drawer
         className={classes.drawer}
         variant="persistent"
@@ -109,10 +128,40 @@ export default function Header() {
       >
         <div className={classes.drawerHeader}>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </div>
-        <Cart />
+        <Divider />
+        <List>
+        {['INICIO', 'TIENDA', 'QUIENES SOMOS', 'PUNTOS DE VENTA','CONTACTO', 'PREGUNTAS FERCUENTES'].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemIcon>
+                {
+                  text === 'INICIO' ? 
+                    <HomeIcon/> : null
+                }
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {['Tu cuenta', 'Carrito'].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemIcon>
+                { 
+                  text === 'Carrito' ?
+                  <Badge badgeContent={4} color="secondary">
+                    <ShoppingCartIcon />
+                  </Badge>
+                  : null
+                }
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List>
       </Drawer>
     </div>
   );
