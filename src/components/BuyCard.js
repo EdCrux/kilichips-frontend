@@ -9,34 +9,24 @@ const useStyles = makeStyles((theme) => ({
     zIndex: '600',
     position: 'absolute',
     top: '50%',
-    left: '50%',
-    transform: 'translate(-160%, -0%)',
-    '@media (max-width:768px)' : {
-      textAlign: 'center',
-      transform: 'translate(-50%, -20%)',
-    },
-    '@media (min-width:1440px)' : {
-      transform: 'translate(-190%, -20%)',
-    }
+    left: '10%',
+    transform: 'translate(-10%, -50%)',
   },
   title:{
+    color: grey[50],
     textTransform: 'capitalize',
     fontSize: '6rem',
     '@media (max-width:425px)' : {
-      fontSize: '2rem',
-      color: grey[50],
+      fontSize: '1rem',
     },
     
     '@media (min-width:426px)' : {
       fontSize: '4rem',
-      color: grey[50],  
     },
-    '@media (min-width:769px)' : {
-      color: grey[900],
-    }
   },
 
   extendedIcon: {
+    width: '100px',
     marginRight: theme.spacing(1),
   },
 }));
@@ -46,13 +36,13 @@ const BuyCard = () => {
   const classes = useStyles();
   return ( 
   <div className={classes.root}>
-    <Typography variant="h5" component="h3" className={classes.title}>
+    <Typography variant="h1"  className={classes.title}>
       Saludable
     </Typography>
-    <Typography variant="h1" component="h3" className={classes.title}>
-      tentación
+    <Typography variant="h2" className={classes.title}>
+      tentación!
     </Typography>
-    <Button variant="contained" size="large" color="secondary" className={classes.margin}>
+    <Button variant="contained" size="large" className={classes.width}>
       Comprar 
     </Button>
   </div>

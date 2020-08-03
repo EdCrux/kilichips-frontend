@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import hero from '../images/kili.JPG';
+import hero from '../images/kili.png';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -21,21 +21,19 @@ const useStyles = makeStyles((theme) => ({
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    height: '89%',
+    height: '100%',
     zIndex: '-500',
+    background: '#ff5000'
   },
   img: {
     display: 'block',
     overflow: 'hidden',
     width: '100%',
     height: '80%',
+    clipPath: 'circle(80% at 100% 42%)',
     '@media (max-width:768px)' :{
       filter: 'brightness(0.60)',
-      clipPath: 'circle(75% at 50% 0%)',
     },
-    '@media (min-width:769px)' : {
-      clipPath: 'circle(75% at 70% 0%)',
-    }
   },
 }));
 
@@ -43,7 +41,9 @@ function Slider() {
 const classes = useStyles();
   return (
     <div className={classes.root}>
-      <div className={classes.frame}></div>
+      <div className={classes.frame}>
+        hey
+      </div>
       <img src={hero} className={classes.img} alt="title" />
     </div>
   );

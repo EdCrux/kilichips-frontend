@@ -1,9 +1,18 @@
 import React from 'react';
+
+import { makeStyles } from '@material-ui/core/styles';
+import Popover from '@material-ui/core/Popover';
+import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+
+const useStyles = makeStyles((theme) => ({
+  typography: {
+    padding: theme.spacing(2),
+  },
+}));
 
 export default function StoreItem() {
+  const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -14,22 +23,31 @@ export default function StoreItem() {
     setAnchorEl(null);
   };
 
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
+
   return (
     <React.Fragment>
       <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
         Tienda
       </Button>
-      <Menu
-        id="simple-menu"
+      <Popover
+        id={id}
+        open={open}
         anchorEl={anchorEl}
-        keepMounted
-        open={Boolean(anchorEl)}
         onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
-      </Menu>
+        <Typography className={classes.typography}>The content of the Popover.</Typography>
+      </Popover>
+
     </React.Fragment>
   );
 }

@@ -146,7 +146,7 @@ export default function Header() {
             </div>
             <StoreItem />
             <Button edge="start">
-              Quienes Somos
+              Historia
             </Button>
             <Button >
               Puntos de Venta
