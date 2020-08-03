@@ -21,8 +21,9 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Hidden from '@material-ui/core/Hidden';
 import StoreItem from './StoreItem';
 import Button from '@material-ui/core/Button';
+import Account from './Account'
 
-const drawerWidth = 300;
+const drawerWidth = 250;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -79,11 +80,18 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginLeft: 0,
   },
+  logoContainer: {
+    margin: '0 auto 0 0'
+  },
   logo: {
-    width: '150px'
+    width: '100px',
+    '@media (max-width:768px)':{
+      width: '80px'
+    }
   },
   sectionDesktop: {
-    display: 'flex'
+    display: 'flex',
+    margin: '0 auto'
   },
 }));
 
@@ -109,8 +117,8 @@ export default function Header() {
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar smDown>
-          <Hidden only = {[ 'md', 'lg', 'xl']}>
+        <Toolbar>
+          <Hidden only = {['lg', 'xl']}>
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -121,22 +129,38 @@ export default function Header() {
               <MenuIcon />
             </IconButton>
           </Hidden>
-          <Button variant="h6" >
-            <img src={Logo} alt="logo" className={classes.logo}/>
-          </Button>
-          <Hidden only={['xs','sm']}>
+          <div className={classes.logoContainer}>
+            <Button>
+              <img src={Logo} alt="logo" className={classes.logo}/>
+            </Button>
+          </div>
+          <Hidden only={['xs','sm', 'md']} >
             <div className={classes.sectionDesktop}>
-              <div>
-                <Button variant="h6" edge="start">
-                  <IconButton color="secondary">
-                    <HomeIcon/>
-                  </IconButton>
-                    Inicio
-                </Button>
-              </div>
-              <StoreItem />
+            <div>
+              <Button variant="h6" edge="start">
+                <IconButton color="secondary">
+                  <HomeIcon/>
+                </IconButton>
+                  Inicio
+              </Button>
+            </div>
+            <StoreItem />
+            <Button edge="start">
+              Quienes Somos
+            </Button>
+            <Button >
+              Puntos de Venta
+            </Button>
+            <Button >
+              Contacto
+            </Button>
+            <Button >
+              Preguntas Frecuentes
+            </Button>
             </div>
           </Hidden>
+          
+          <Account />
         </Toolbar>
       </AppBar>
       <Drawer
