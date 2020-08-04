@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title:{
     color: grey[50],
+    textShadow: `2px 2px 5px ${grey[900]}`,
     textTransform: 'uppercase',
     fontSize: '2rem',
     '@media (max-width:425px)' : {
@@ -25,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   subtitle: {
+    textShadow: `2px 2px 5px ${grey[900]}`,
     color: grey[50],
     textTransform: 'uppercase'
   },
@@ -33,6 +35,14 @@ const useStyles = makeStyles((theme) => ({
     width: '100px',
     marginRight: theme.spacing(1),
   },
+
+  buttonBuy: {
+    width: 400,
+    fontWeight: 600,
+    backgroundColor: '#fafafa',
+    border: '4px solid #707070',
+    color: '#8F8B88',
+  }
 }));
 
 const BuyCard = () => {
@@ -46,7 +56,7 @@ const BuyCard = () => {
     <Typography variant="h2" className={classes.subtitle}>
       Tentacion
     </Typography>
-    <Button variant="contained" size="large" className={classes.width}>
+    <Button variant="contained" size="large" className={classes.buttonBuy}>
       Comprar 
     </Button>
   </div>

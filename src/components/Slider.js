@@ -23,7 +23,8 @@ const useStyles = makeStyles((theme) => ({
     transform: 'translate(-50%, -50%)',
     height: '100%',
     zIndex: '-500',
-    background: '#ff5000'
+    background: '#ff5000',
+    background: 'linear-gradient(to right, #f12711, #f5af19)',
   },
   img: {
     display: 'block',
