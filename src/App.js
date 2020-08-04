@@ -8,6 +8,10 @@ import { ThemeProvider } from '@material-ui/styles';
 import Footer from './containers/Footer';
 
 const theme = createMuiTheme({
+
+  typography: {
+    fontFamily: 'Montserrat'
+  },
   palette: {
     primary: {
       main: '#fafafa',
@@ -16,7 +20,6 @@ const theme = createMuiTheme({
       main: '#ff5000',
     },
   },
-
 });
 
 function App() {
