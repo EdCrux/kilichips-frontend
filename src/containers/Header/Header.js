@@ -14,14 +14,14 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Logo from '../images/Logo.svg';
+import Logo from '../../images/Logo.svg';
 import HomeIcon from '@material-ui/icons/Home';
 import Badge from '@material-ui/core/Badge';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import Hidden from '@material-ui/core/Hidden';
-import StoreItem from './StoreItem';
+import StoreItem from '../../components/StoreItem';
 import Button from '@material-ui/core/Button';
-import Account from './Account'
+import Account from '../../components/Account'
 
 const drawerWidth = 250;
 

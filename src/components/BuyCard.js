@@ -14,15 +14,19 @@ const useStyles = makeStyles((theme) => ({
   },
   title:{
     color: grey[50],
-    textTransform: 'capitalize',
-    fontSize: '6rem',
+    textTransform: 'uppercase',
+    fontSize: '2rem',
     '@media (max-width:425px)' : {
       fontSize: '1rem',
     },
     
     '@media (min-width:426px)' : {
-      fontSize: '4rem',
+      fontSize: '3rem',
     },
+  },
+  subtitle: {
+    color: grey[50],
+    textTransform: 'uppercase'
   },
 
   extendedIcon: {
@@ -39,8 +43,8 @@ const BuyCard = () => {
     <Typography variant="h1"  className={classes.title}>
       Saludable
     </Typography>
-    <Typography variant="h2" className={classes.title}>
-      tentación!
+    <Typography variant="h2" className={classes.subtitle}>
+      Tentacion
     </Typography>
     <Button variant="contained" size="large" className={classes.width}>
       Comprar 

@@ -1,19 +1,18 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header'
+import Header from './containers/Header/Header'
 import Home from './containers/Home';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
+import Footer from './containers/Footer';
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      // Purple and green play nicely together.
       main: '#fafafa',
     },
     secondary: {
-      // This is green.A700 as hex.
       main: '#ff5000',
     },
   },
@@ -28,6 +27,7 @@ function App() {
         <CssBaseline />
         <Header />
         <Home />
+        <Footer/>
       </React.Fragment>
     </ThemeProvider>
   );
