@@ -1,8 +1,8 @@
 import React from 'react';
-import whykili from '../images/whykili.png';
+import whykili from './images/whykili.png';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
+import BannersAbout from './BannersAbout';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -64,7 +64,11 @@ const About = () => {
         <Typography className={classes.slogan}>
         ¡Haz más de eso que te hace feliz !
         </Typography>
-    </React.Fragment>
+      <div>
+        <BannersAbout />
+      </div>
+      
+      </React.Fragment>
    );
 }
  
