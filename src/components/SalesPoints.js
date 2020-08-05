@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     width: '90%',
     margin: '0 auto',
     padding: '2rem',
-    minHeight: '30vh'
+    minHeight: '40vh'
   },
   media: {
     margin: 8,

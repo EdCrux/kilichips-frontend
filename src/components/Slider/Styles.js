@@ -1,9 +1,7 @@
-import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import hero from '../images/kili.png';
 
 
-const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     flexGrow: 1,
@@ -36,17 +34,3 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
-function Slider() {
-const classes = useStyles();
-  return (
-    <div className={classes.root}>
-      <div className={classes.frame}>
-        hey
-      </div>
-      <img src={hero} className={classes.img} alt="title" />
-    </div>
-  );
-}
-
-export default Slider;
