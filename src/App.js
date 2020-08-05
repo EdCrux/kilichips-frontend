@@ -1,37 +1,39 @@
 import React from 'react';
-import './App.css';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
+
+// containers
 import Header from './containers/Header/Header'
 import Home from './containers/Home';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
 import Footer from './containers/Footer/Footer';
+import Store from './containers/Store';
 
-const theme = createMuiTheme({
-  typography: {
-    fontFamily: 'Montserrat'
-  },
-  palette: {
-    primary: {
-      main: '#fafafa',
-    },
-    secondary: {
-      main: '#ff5000',
-    },
-  },
-});
+// material UI
+import { ThemeProvider } from '@material-ui/styles';
+import { theme } from './Theme';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
+
 
 function App() {
   
   return (
+    <React.Fragment>
     <ThemeProvider theme={theme}>
-      <React.Fragment>
+      <BrowserRouter>
         <CssBaseline />
         <Header />
-        <Home />
+          <Switch>
+            <Route exact path="/" render={()=> (
+              <Home/>
+            )}/>
+            <Route exact path="/store" render={() => (
+              <Store />
+            )}/>
+          </Switch>
         <Footer/>
-      </React.Fragment>
+      </BrowserRouter>
     </ThemeProvider>
+    </React.Fragment>
   );
 }
 
