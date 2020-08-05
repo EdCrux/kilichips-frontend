@@ -11,6 +11,10 @@ const useStyles = makeStyles((theme) => ({
     top: '50%',
     left: '10%',
     transform: 'translate(-10%, -50%)',
+    '@media (max-width: 425px)' : {
+      left: '50%',
+      transform: 'translate(-50%, -30%)'
+    }
   },
   title:{
     color: grey[50],
@@ -28,7 +32,10 @@ const useStyles = makeStyles((theme) => ({
   subtitle: {
     textShadow: `2px 2px 5px ${grey[900]}`,
     color: grey[50],
-    textTransform: 'uppercase'
+    textTransform: 'uppercase',
+    '@media (max-width:425px)' : {
+      fontSize: '1.5rem',
+    },
   },
 
   extendedIcon: {
@@ -38,10 +45,15 @@ const useStyles = makeStyles((theme) => ({
 
   buttonBuy: {
     width: 400,
+    '@media (max-width: 768px)' : {
+      marginTop: '20px',
+      width: 200
+    },
     fontWeight: 600,
-    backgroundColor: '#fafafa',
-    border: '4px solid #707070',
-    color: '#8F8B88',
+    fontSize: 15,
+    backgroundColor: '#ff5000',
+    border: '4px solid #fafafa',
+    color: '#fafafa',
   }
 }));
 
@@ -54,7 +66,7 @@ const BuyCard = () => {
       Saludable
     </Typography>
     <Typography variant="h2" className={classes.subtitle}>
-      Tentacion
+      Tentación
     </Typography>
     <Button variant="contained" size="large" className={classes.buttonBuy}>
       Comprar 

@@ -23,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
     transform: 'translate(-50%, -50%)',
     height: '100%',
     zIndex: '-500',
-    background: '#ff5000',
     background: 'linear-gradient(to right, #f12711, #f5af19)',
   },
   img: {
@@ -31,9 +30,9 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'hidden',
     width: '100%',
     height: '80%',
-    clipPath: 'circle(80% at 100% 42%)',
+    clipPath: 'circle(75.2% at 71% 0%)',
     '@media (max-width:768px)' :{
-      filter: 'brightness(0.60)',
+      filter: 'brightness(0.60)'
     },
   },
 }));
