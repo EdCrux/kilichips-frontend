@@ -12,12 +12,12 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   image: {
-    minWidth: '400px',
+    minWidth: '300px',
     padding: 40,
     '@media (max-width: 768px)' : {
-      padding: 10
+      padding: 10,
+      width: '80%'
     },
-    height: 'auto',
     width: '23.3%',
   },
 
