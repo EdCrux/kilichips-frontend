@@ -6,6 +6,7 @@ import Header from './containers/Header/Header'
 import Home from './containers/Home';
 import Footer from './containers/Footer/Footer';
 import Store from './containers/Store';
+import StoresMap from './containers/StoresMap';
 
 // material UI
 import { ThemeProvider } from '@material-ui/styles';
@@ -28,6 +29,9 @@ function App() {
             )}/>
             <Route exact path="/store" render={() => (
               <Store />
+            )}/>
+            <Route exact path="/salesPoints" render={()=>(
+              <StoresMap />
             )}/>
           </Switch>
         <Footer/>
