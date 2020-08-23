@@ -6,7 +6,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import SwipeableViews from 'react-swipeable-views';
-import Product from './Product';
+import Product from '../components/Product';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -142,18 +142,18 @@ const ProductsList = () => {
       >
         <TabPanel value={value} index={0}>
           <div className={classes.productsContainer}>
-            <Product/>
-            <Product/>
+            {/* <Product/>
+            <Product/> */}
           </div>
         </TabPanel>
         <TabPanel value={value} index={1}>
           <div className={classes.productsContainer}>
-            <Product />
+            {/* <Product /> */}
           </div>
         </TabPanel>
         <TabPanel value={value} index={2}>
         <div className={classes.productsContainer}>
-          <Product />
+          {/* <Product /> */}
         </div>
         </TabPanel>
         </SwipeableViews>

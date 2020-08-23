@@ -77,4 +77,8 @@ export const useStyles = makeStyles((theme) => ({
     display: 'flex',
     margin: '0 auto'
   },
+  links: {
+    textDecoration: 'none',
+    color: 'black'
+  }
 }));

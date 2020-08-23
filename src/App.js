@@ -1,37 +1,45 @@
 import React from 'react';
-import './App.css';
-import Header from './containers/Header/Header'
-import Home from './containers/Home';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
-import Footer from './containers/Footer/Footer';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
-const theme = createMuiTheme({
-  typography: {
-    fontFamily: 'Montserrat'
-  },
-  palette: {
-    primary: {
-      main: '#fafafa',
-    },
-    secondary: {
-      main: '#ff5000',
-    },
-  },
-});
+
+// Screens
+import Home from './screens/HomeScreen';
+import Shop from './screens/ShopScreen';
+import StoresMap from './screens/StoresMap';
+import CartScreen from './components/CartScreen';
+import ProductScreen from './screens/ProductScreen';
+
+//Static
+import Header from './screens/Header/Header'
+import Footer from './screens/Footer/Footer';
+
+// material UI
+import { ThemeProvider } from '@material-ui/styles';
+import { theme } from './Theme';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
+
 
 function App() {
   
   return (
+    <React.Fragment>
     <ThemeProvider theme={theme}>
-      <React.Fragment>
+      <BrowserRouter>
         <CssBaseline />
         <Header />
-        <Home />
+          <Switch>
+            <Route path="/cart" component={CartScreen} />
+            <Route exact path="/" component={Home}/>
+            <Route exact path="/shop" component={Shop}/>
+            <Route exact path="/category/:category" component={Shop}/>
+            <Route exact path="/salesPoints" component={StoresMap}/>
+            <Route exact path="/products/:id" component={ProductScreen} />
+          </Switch>
         <Footer/>
-      </React.Fragment>
+      </BrowserRouter>
     </ThemeProvider>
+    </React.Fragment>
   );
 }
 
