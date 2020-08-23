@@ -49,7 +49,7 @@ const ProductScreen = (props) => {
       <BreadCrumbs links={links} productId={product.id} productName={product.name} /> 
         <Grid container spacing={1}>
           <Grid item xs={12} lg={5}>
-            <ProductSlider images={product.images} />
+            <ProductSlider images={product.images} rating={product.rating} numReviews={product.numReviews}/>
           </Grid>
           <Grid item xs={12} lg={7}>
             <div className={classes.detailsInfo}>

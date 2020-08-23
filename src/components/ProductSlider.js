@@ -6,26 +6,38 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
+import Rating from './Rating';
+import {
+  Card,
+  CardActionArea,
+  CardActions, 
+  CardMedia } from '@material-ui/core';
 
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 500,
+    maxWidth: '345px',
     flexGrow: 1,
   },
   img: {
-    height: 335,
     display: 'block',
     maxWidth: 500,
     overflow: 'hidden',
-    widht: '100%',
+    width: '100%',
+    margin: '0 auto'
+  },
+  ratingContainer: {
+    display: 'flex',
+    justifyContent: 'center'
+  },
+  rating: {
     margin: '0 auto'
   }
 }));
 
-const ProductSlider = ({ images }) => {
+const ProductSlider = ({ images, rating, numReviews }) => {
   const classes = useStyles();
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
@@ -44,18 +56,21 @@ const ProductSlider = ({ images }) => {
   }
 
   return <div className={classes.root}>
+    <Card className={classes.root}>
+    <CardActionArea>
+    <CardMedia>
     <AutoPlaySwipeableViews
       axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
       index={activeStep}
       onChangeIndex={handleStepChange}
       enableMouseEvents
-    >
+      >
       {
         images  .map((step, index) => (
           <div key={step}>
             {Math.abs(activeStep - index) <= 2 ? (
               <img className={classes.img} src={`http://localhost:3000${step}`} alt={`productImage ${index}`} /> 
-            ) : null }
+              ) : null }
           </div>
         ))
       }
@@ -77,9 +92,15 @@ const ProductSlider = ({ images }) => {
           Back
         </Button>
       }
-
-
-    />
+      />
+      </CardMedia>
+    </CardActionArea>
+    <CardActions className={classes.ratingContainer}>
+      <Rating
+        className={classes.rating}
+        value={rating} text={`  ${numReviews} reviews`}/>
+    </CardActions>
+    </Card>
   </div>;
 }
  
