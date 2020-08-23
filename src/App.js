@@ -6,7 +6,7 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import Home from './screens/HomeScreen';
 import Shop from './screens/ShopScreen';
 import StoresMap from './screens/StoresMap';
-import CartScreen from './components/CartScreen';
+import CartScreen from './screens/CartScreen';
 import ProductScreen from './screens/ProductScreen';
 
 //Static

@@ -49,6 +49,10 @@ const ProductScreen = (props) => {
   const productDetails = useSelector(state => state.productDetails)
   const {product, loading, error} = productDetails;
   const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    props.history.push(`/cart/${props.match.params.id}?qty=${qty}`)
+  }
   
   useEffect(() =>{
     dispatch(detailsProduct(props.match.params.id));
@@ -103,7 +107,9 @@ const ProductScreen = (props) => {
                 {
                   product.countInStock > 0 &&
                   (<div>
-                    <Button variant="contained" color="secondary">
+                    <Button
+                      onClick={handleAddToCart}
+                      variant="contained" color="secondary">
                       Agregar al carrito
                     </Button>
                   </div>)
