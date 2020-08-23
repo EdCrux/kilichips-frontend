@@ -7,7 +7,7 @@ import {
   compose } from 'redux';
 
 // Reducers
-//import { cartReducer } from './reducers/cartReducers'; 
+import { cartReducer } from './reducers/cartReducers'; 
 import { 
   productListReducer,
   productDetailsReducer
@@ -30,14 +30,14 @@ import {
 //const userInfo = userInfoparsed || null;
 
 const initialState = { 
-  //cart: { cartItems, shipping: {}, payment: {} },
+  cart: { cartItems },
   //userSignin: { userInfo }
 };
 
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
-  //cart: cartReducer,
+  cart: cartReducer,
   //userSignin: userSigninReducer,
   //userRegister: userRegisterReducer,
   //productSave: productSaveReducer,
