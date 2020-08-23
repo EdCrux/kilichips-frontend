@@ -69,7 +69,7 @@ export default function Header(props) {
             </div>
           <Hidden only={['xs','sm', 'md']} >
             <div className={classes.sectionDesktop}>
-            <Link to="/">
+            <Link to="/" className={classes.links}>
               <div>
                   <Button variant="h6" edge="start">
                     <IconButton color="secondary">
@@ -80,27 +80,27 @@ export default function Header(props) {
               </div>
             </Link>
             <Button>
-              <Link to="/store">
+              <Link to="/shop" className={classes.links}>
                 Tienda
               </Link>
             </Button>
             <Button edge="start">
-              <Link to="/blog">
+              <Link to="/blog" className={classes.links}>
                 Blog
               </Link>
             </Button>
             <Button>
-              <Link to="/contact">
+              <Link to="/contact" className={classes.links}>
                 Contacto
               </Link>
             </Button>
             <Button>
-              <Link to="/salesPoints">
+              <Link to="/salesPoints" className={classes.links}>  
                 Puntos de Venta
               </Link>
             </Button>
             <Button >
-              <Link to="/FAQ">
+              <Link to="/FAQ" className={classes.links}>
                 Preguntas Frecuentes
               </Link>
             </Button>

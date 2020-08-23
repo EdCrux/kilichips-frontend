@@ -1,12 +1,17 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
-// containers
-import Header from './containers/Header/Header'
-import Home from './containers/Home';
-import Footer from './containers/Footer/Footer';
-import Store from './containers/Store';
-import StoresMap from './containers/StoresMap';
+
+// Screens
+import Home from './screens/HomeScreen';
+import Shop from './screens/ShopScreen';
+import StoresMap from './screens/StoresMap';
+import CartScreen from './components/CartScreen';
+import ProductScreen from './screens/ProductScreen';
+
+//Static
+import Header from './screens/Header/Header'
+import Footer from './screens/Footer/Footer';
 
 // material UI
 import { ThemeProvider } from '@material-ui/styles';
@@ -24,15 +29,12 @@ function App() {
         <CssBaseline />
         <Header />
           <Switch>
-            <Route exact path="/" render={()=> (
-              <Home/>
-            )}/>
-            <Route exact path="/store" render={() => (
-              <Store />
-            )}/>
-            <Route exact path="/salesPoints" render={()=>(
-              <StoresMap />
-            )}/>
+            <Route path="/cart" component={CartScreen} />
+            <Route exact path="/" component={Home}/>
+            <Route exact path="/shop" component={Shop}/>
+            <Route exact path="/category/:category" component={Shop}/>
+            <Route exact path="/salesPoints" component={StoresMap}/>
+            <Route exact path="/products/:id" component={ProductScreen} />
           </Switch>
         <Footer/>
       </BrowserRouter>

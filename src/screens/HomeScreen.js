@@ -4,11 +4,11 @@ import BuyCard from '../components/BuyCard';
 import Hero from '../components/Hero';
 import About from '../components/About/About';
 import SalesPoints from '../components/SalesPoints';
-import ProductsList from '../components/Products/ProductsList';
+import ProductsList from './ProductsList';
 
 
 
-const Home = () => {
+const HomeScreen = () => {
   return (
     <React.Fragment>
       <Hero>
@@ -22,4 +22,4 @@ const Home = () => {
    );
 }
  
-export default Home;
+export default HomeScreen;

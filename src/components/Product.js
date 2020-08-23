@@ -5,14 +5,14 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
+import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import ProductImage from '../../images/footerImage.png';
+import Rating from './Rating';
 
 const useStyles = makeStyles({
   root: {
-    width: 320,
-    maxWidth: 345,
+    width: 300,
     backgroundColor: '#fafafa',
     margin: 20
   },
@@ -29,40 +29,38 @@ const useStyles = makeStyles({
     backgroundColor: '#64A72F',
     color: 'white'
   },
-  center: {
-    textAlign: 'center'
-  }
+
 });
 
-const Product = () => {
+const Product = ({product}) => {
   const classes = useStyles();
 
   return (
     <Card className={classes.root}>
       <CardActionArea>
+        <Link to={`/products/${product.id}`}>
         <CardMedia
           className={classes.media}
-          image={ProductImage}
+          image={`http://localhost:3000/${product.images[0]}`}
           title="Contemplative Reptile"
-        />
+          />
+        </Link>
         <CardContent>
           <div className={classes.descriptionContainer}>
-          <Typography variant="h5" component="h2">
-            Precio: $1500
+          <Typography variant="body2" component="h2">
+            {product.name}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Natural
+          <Typography color="textSecondary" component="p">
+            Precio: <b>${product.price}</b> 
           </Typography>
           </div>
-          <Typography variant="h6" color="secondary" className={classes.center}>
-            Paquete de 5 piezas
+          <Typography variant="body2" component="p" color="secondary">
+            {product.description ? `${product.description.substring(0,20)} ...` : `${product.description}...`}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button className={classes.buyButton}>
-          Agregar al carrito
-        </Button>
+        <Rating value={product.rating} text={`  ${product.numReviews} reviews`}/>
       </CardActions>
     </Card>
   );
