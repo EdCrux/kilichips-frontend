@@ -20,6 +20,7 @@ const useStyles = makeStyles ((theme) => ({
   categoriesTitle: {
     textTransform: 'uppercase',
     marginBottom: '0'
+
   },
 
   loaderContainer: {
@@ -34,7 +35,8 @@ const useStyles = makeStyles ((theme) => ({
   },
 
   categoryTitle: {
-    textAlign: 'center'
+    textAlign: 'center',
+    margin: '1rem 0 0 0'
   }
 }))
 
@@ -49,12 +51,12 @@ const Store = (props) => {
 
  
   useEffect(() => {
-    dispatch(listProducts())
+    dispatch(listProducts(category))
   },[category])
   
   const classes = useStyles();
   const categories = products.map(x => x.category.toLowerCase());
-  const uniqueCategories = [...new Set(categories)];
+  const uniqueCategories = ['camote', 'betabel' , 'zanahoria' , 'jícama']
   
   const capitalize = s => typeof s !== 'string' ?  '' : s.charAt(0).toUpperCase() + s.slice(1);  
 
@@ -77,8 +79,9 @@ const Store = (props) => {
             ))}
         </Grid>
         <Grid item xs={12} lg={10}>
-          { category && <h2 className={classes.categoryTitle}>{capitalize(category)}</h2>}
-          <Divider></Divider> 
+          { category ?
+            <h2 className={classes.categoryTitle}>{capitalize(category)}</h2> :  <h2 className={classes.categoryTitle}> Productos</h2>}
+          <Divider ></Divider> 
           <div className={classes.root}>
               {products.map((product) => (
                 <Product product={product} />

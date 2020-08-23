@@ -46,7 +46,7 @@ const ProductScreen = (props) => {
          <CircularProgress color="secondary" /> :
       </div> : error ? (<div>{error}</div>) :
       <Container maxWidth="md" >
-      <BreadCrumbs links={links} productId={product.id} /> 
+      <BreadCrumbs links={links} productId={product.id} productName={product.name} /> 
         <Grid container spacing={1}>
           <Grid item xs={12} lg={5}>
             <ProductSlider images={product.images} />

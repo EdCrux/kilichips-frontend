@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) =>({
   }
 }))
 
-export default function BreadCrumbs({links , productId}) {
+export default function BreadCrumbs({links , productId, productName}) {
   const classes = useStyles();
   return (
     <Breadcrumbs aria-label="breadcrumb" className={classes.root} >
@@ -24,9 +24,11 @@ export default function BreadCrumbs({links , productId}) {
         } else {
           link = `/product/${productId}`
         }
-        return <Link className={classes.root} to={link} >
-          {link}
-        </Link>
+        return <Link 
+        className={classes.root} 
+        to={link} > 
+        {
+          link === '/' ? 'home' : link === '/shop' ? 'tienda': link === `/product/${productId}` ? productName : '' } </Link>
       }
       )}
     </Breadcrumbs>
