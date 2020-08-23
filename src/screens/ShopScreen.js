@@ -19,7 +19,7 @@ const useStyles = makeStyles ((theme) => ({
   },
   categoriesTitle: {
     textTransform: 'uppercase',
-    marginBottom: '0'
+    margin: '1.6rem 0 0 0'
 
   },
 
@@ -69,7 +69,7 @@ const Store = (props) => {
     <Container maxWidth="md" >
       <BreadCrumbs links={links} />
       <Grid container spacing={1}>
-        <Grid item xs={12} lg={2}>
+        <Grid item xs={12} lg={3}>
           <h2 className={classes.categoriesTitle}>Categorias</h2>
           <Divider></Divider>
             {uniqueCategories.map((category, i) => (
@@ -78,9 +78,9 @@ const Store = (props) => {
               </React.Fragment>
             ))}
         </Grid>
-        <Grid item xs={12} lg={10}>
+        <Grid item xs={12} lg={9}>
           { category ?
-            <h2 className={classes.categoryTitle}>{capitalize(category)}</h2> :  <h2 className={classes.categoryTitle}> Productos</h2>}
+            <h1 className={classes.categoryTitle}>{capitalize(category)}</h1> :  <h1 className={classes.categoryTitle}> Productos</h1>}
           <Divider ></Divider> 
           <div className={classes.root}>
               {products.map((product) => (

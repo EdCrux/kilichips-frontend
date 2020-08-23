@@ -3,11 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import ProductSlider from '../components/ProductSlider';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Divider , Typography, Grid , Container} from '@material-ui/core'
+import { Divider , Typography, Grid , Container, Button} from '@material-ui/core'
 import { detailsProduct } from '../actions/productActions';
 import BreadCrumbs from '../components/BreadCrumbs';
 import CircularProgress from '@material-ui/core/CircularProgress';
-
+import Variants from '../components/Variants';
+import Reviews from '../components/Reviews';
 
 const useStyles = makeStyles(() => ({
   statusTagAvailable: {
@@ -22,7 +23,22 @@ const useStyles = makeStyles(() => ({
     textAlign: 'center',
     fontSize: '1.3rem',
     padding: 1
-  }
+  },
+
+  reviewsTitle: {
+    textTransform: 'uppercase',
+    fontWeight: '600',
+    marginTop: '1rem',
+    marginBottom: '-5px',  
+    textAlign: 'center',
+    fontSize: '1.9rem'
+  },
+  divider: {
+    width: '60%',
+    height: '4px',
+    margin:' 0 auto',
+    backgroundColor: '#ff5000'
+  } 
 }))
 
 const ProductScreen = (props) => {
@@ -48,12 +64,12 @@ const ProductScreen = (props) => {
       <Container maxWidth="md" >
       <BreadCrumbs links={links} productId={product.id} productName={product.name} /> 
         <Grid container spacing={1}>
-          <Grid item xs={12} lg={5}>
+          <Grid item xs={12} md={6} lg={5}>
             <ProductSlider images={product.images} rating={product.rating} numReviews={product.numReviews}/>
           </Grid>
-          <Grid item xs={12} lg={7}>
+          <Grid item xs={12} md={6} lg={7}>
             <div className={classes.detailsInfo}>
-              <h2>{product.name}</h2>
+              <h1>{product.name}</h1>
               <Divider></Divider>
               <Typography>
                 {product.description}
@@ -70,19 +86,41 @@ const ProductScreen = (props) => {
                 className={product.countInStock > 0 ? classes.statusTagAvailable : classes.statusTagUnAvailable} 
                 >Status: {product.countInStock > 0 ? 'Disponible' : 'No disponible' } </div>
               <div>
-                <input
-                  className={classes.qtyInput} 
-                  value={qty}
-                  type="number" 
-                  step="any" 
-                  placeholder="1" 
-                  min="1" 
-                  max={product.countInStock}
-                  onChange={ (e) => {setQty(Number(e.target.value))}}
-                />
+                <div>
+                  Cantidad:  
+                  <input
+                    className={classes.qtyInput} 
+                    value={qty}
+                    type="number" 
+                    step="any" 
+                    placeholder="1" 
+                    min="1" 
+                    max={product.countInStock}
+                    onChange={ (e) => {setQty(Number(e.target.value))}}
+                  />
+                </div>
+                <br/>
+                {
+                  product.countInStock > 0 &&
+                  (<div>
+                    <Button variant="contained" color="secondary">
+                      Agregar al carrito
+                    </Button>
+                  </div>)
+                }
               </div>
             </div>
           </Grid> 
+        </Grid>
+        <Grid container>
+          <Variants variants={product.variants} />
+        </Grid>
+        <Grid container direction="column">
+            <Typography className={classes.reviewsTitle}>
+              Opiniones del producto
+            </Typography>
+            <div className={classes.divider}></div>
+            <Reviews reviews={product.reviews} />
         </Grid>
       </Container>
     }
