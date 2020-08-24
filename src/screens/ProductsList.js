@@ -10,6 +10,8 @@ import ProductCard from '../components/ProductCard';
 import { useDispatch, useSelector } from 'react-redux';
 import {listProducts} from '../actions/productActions';
 
+import Loader from '../components/Loader';
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -125,7 +127,9 @@ const ProductsList = () => {
     setValue(index);
   };
 
-  return (
+  return <React.Fragment>
+    { loading ? <Loader /> :
+      error ? (<div>{error}</div>) :
     <div className={classes.root}>
       <Typography className={classes.title}>
         Productos
@@ -173,7 +177,9 @@ const ProductsList = () => {
         </TabPanel>
         </SwipeableViews>
     </div>
-  )
+    }
+
+  </React.Fragment> 
 }
 
 export default ProductsList;
