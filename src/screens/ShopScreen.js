@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import BreadCrumbs from '../components/BreadCrumbs';
 import Container from '@material-ui/core/Container';
 import { Grid, Divider } from '@material-ui/core';
@@ -6,8 +6,8 @@ import {makeStyles } from '@material-ui/core';
 import {listProducts} from '../actions/productActions';
 import {useSelector, useDispatch } from 'react-redux';
 import ProductCard from '../components/ProductCard';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import CheckboxList from '../components/CheckboxList';
+import Loader from '../components/Loader';
 
 
 
@@ -22,18 +22,6 @@ const useStyles = makeStyles ((theme) => ({
     margin: '1.6rem 0 0 0'
 
   },
-
-  loaderContainer: {
-    position: 'absolute',
-    zIndex: '1000',
-    height: '100vh',
-    width:'100%',
-    backgroundColor: '#11111195',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center' 
-  },
-
   categoryTitle: {
     textAlign: 'center',
     margin: '1rem 0 0 0'
@@ -44,7 +32,7 @@ const useStyles = makeStyles ((theme) => ({
 const Store = (props) => {
 
   const category  = props.match.params.category ? props.match.params.category : '';
-  const [links, setLinks] = useState(['home', 'categories']);
+  const links = ['home', 'categories'];
   const productList = useSelector(state => state.productList);
   const {products, loading, error } = productList;
   const dispatch = useDispatch();
@@ -61,10 +49,7 @@ const Store = (props) => {
   const capitalize = s => typeof s !== 'string' ?  '' : s.charAt(0).toUpperCase() + s.slice(1);  
 
   return <React.Fragment>
-  { loading ?
-     <div className={classes.loaderContainer}>
-        <CircularProgress color="secondary" /> :
-     </div> :
+  { loading ? <Loader /> :
     error ? (<div>{error}</div>) :
     <Container maxWidth="md" >
       <BreadCrumbs links={links} />
