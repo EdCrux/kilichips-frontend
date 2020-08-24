@@ -9,6 +9,7 @@ import StoresMap from './screens/StoresMap';
 import CartScreen from './screens/CartScreen';
 import ProductScreen from './screens/ProductScreen';
 import RegistrationScreen from './screens/Registration/RegistrationScreen';
+import Shipping from './screens/Shipping';
 
 //Static
 import Header from './screens/Header/Header'
@@ -19,6 +20,7 @@ import { ThemeProvider } from '@material-ui/styles';
 import { theme } from './Theme';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import PrivateRoute from './privateRoute';
+import SigninScreen from './screens/Signin';
 
 
 
@@ -38,6 +40,7 @@ function App() {
             <Route exact path="/category/:category" component={Shop}/>
             <Route exact path="/salesPoints" component={StoresMap}/>
             <Route exact path="/products/:id" component={ProductScreen} />
+            <Route exact path="/signin" component={SigninScreen} />
             <PrivateRoute path="/shipping" component={Shipping}/>
           </Switch>
         <Footer/>
