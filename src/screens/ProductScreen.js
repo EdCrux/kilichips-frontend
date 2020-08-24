@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import ProductSlider from '../components/ProductSlider';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Divider , Typography, Grid , Container, Button} from '@material-ui/core'
+import { Divider , Typography, Grid , Container, Button, TextField} from '@material-ui/core'
 import { detailsProduct } from '../actions/productActions';
 import BreadCrumbs from '../components/BreadCrumbs';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -12,6 +12,7 @@ import Reviews from '../components/Reviews';
 
 const useStyles = makeStyles(() => ({
   statusTagAvailable: {
+    marginBottom: '1rem',
     color: '#64A72F'
   },
   statusTagUnAvailable: {
@@ -90,23 +91,28 @@ const ProductScreen = (props) => {
                 className={product.countInStock > 0 ? classes.statusTagAvailable : classes.statusTagUnAvailable} 
                 >Status: {product.countInStock > 0 ? 'Disponible' : 'No disponible' } </div>
               <div>
-                <div>
-                  Cantidad:  
-                  <input
-                    className={classes.qtyInput} 
-                    value={qty}
-                    type="number" 
-                    step="any" 
-                    placeholder="1" 
-                    min="1" 
-                    max={product.countInStock}
-                    onChange={ (e) => {setQty(Number(e.target.value))}}
-                  />
-                </div>
-                <br/>
                 {
                   product.countInStock > 0 &&
                   (<div>
+                    <div>
+                      <TextField
+                        color="secondary" 
+                        id="standard-number"
+                        variant="outlined"
+                        label="Cantidad"
+                        type="number"
+                        value={qty}
+                        step="any" 
+                        min="1" 
+                        onChange={ (e) => {setQty(Number(e.target.value))}}
+                        max={product.countInStock}
+                        
+                        InputLabelProps={{
+                        shrink: true,
+                        }}
+                      />    
+                    </div>
+                    <br/>
                     <Button
                       onClick={handleAddToCart}
                       variant="contained" color="secondary">

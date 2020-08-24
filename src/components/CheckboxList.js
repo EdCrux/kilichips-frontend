@@ -35,13 +35,6 @@ const CheckboxList = ({value, productCategory, handleBreadCrumb}) => {
     <List className={classes.root}>      
       <ListItem key={value} role={undefined} dense button onClick={handleToggle(value)}>
         <Link to={`/category/${productCategory}`} className={classes.categoriesLinkBox}>
-        <ListItemIcon>
-          <Checkbox
-            edge="start"
-            disableRipple
-            inputProps={{ 'aria-labelledby': labelId }}
-          />
-        </ListItemIcon>
         <ListItemText id={labelId} primary={productCategory} />
         </Link>
       </ListItem>

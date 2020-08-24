@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useTheme, withStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
@@ -6,7 +6,10 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import SwipeableViews from 'react-swipeable-views';
-import Product from '../components/Product';
+import ProductCard from '../components/ProductCard';
+import { useDispatch, useSelector } from 'react-redux';
+import {listProducts} from '../actions/productActions';
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -103,10 +106,17 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 const ProductsList = () => {
+
+  const productList = useSelector(state => state.productList);
+  const {products, loading, error } = productList;
+  const dispatch = useDispatch();
   const classes = useStyles();
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
-
+  
+  useEffect(()=>{
+    dispatch(listProducts())
+  },[])
   const handleChange = (event, newValue) => {
     setValue(newValue);
   }
@@ -131,7 +141,7 @@ const ProductsList = () => {
         >
           <CategoryTab label="Zanahoria" {...a11yProps(0)} />
           <CategoryTab label="Jicama"    {...a11yProps(1)} />
-          <CategoryTab label="Betabel"   {...a11yProps(2)} />
+          <CategoryTab label="Camote"   {...a11yProps(2)} />
         </CategoryTabs>
       </div>
 
@@ -142,18 +152,23 @@ const ProductsList = () => {
       >
         <TabPanel value={value} index={0}>
           <div className={classes.productsContainer}>
-            {/* <Product/>
-            <Product/> */}
+            {products.filter(product => product.category.includes('zanahoria')).map(filteredProduct => (
+                <ProductCard product={filteredProduct} />
+              ))}
           </div>
         </TabPanel>
         <TabPanel value={value} index={1}>
           <div className={classes.productsContainer}>
-            {/* <Product /> */}
+          {products.filter(product => product.category.includes('jicama')).map(filteredProduct => (
+                <ProductCard product={filteredProduct} />
+              ))}
           </div>
         </TabPanel>
         <TabPanel value={value} index={2}>
         <div className={classes.productsContainer}>
-          {/* <Product /> */}
+        {products.filter(product => product.category.includes('camote')).map(filteredProduct => (
+                <ProductCard product={filteredProduct} />
+              ))}
         </div>
         </TabPanel>
         </SwipeableViews>

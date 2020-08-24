@@ -8,6 +8,7 @@ import Shop from './screens/ShopScreen';
 import StoresMap from './screens/StoresMap';
 import CartScreen from './screens/CartScreen';
 import ProductScreen from './screens/ProductScreen';
+import RegistrationScreen from './screens/Registration/RegistrationScreen';
 
 //Static
 import Header from './screens/Header/Header'
@@ -17,6 +18,7 @@ import Footer from './screens/Footer/Footer';
 import { ThemeProvider } from '@material-ui/styles';
 import { theme } from './Theme';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import PrivateRoute from './privateRoute';
 
 
 
@@ -29,12 +31,14 @@ function App() {
         <CssBaseline />
         <Header />
           <Switch>
-            <Route path="/cart" component={CartScreen} />
+            <Route path="/registration" component={RegistrationScreen}/>
+            <Route path="/cart/:id" component={CartScreen} />
             <Route exact path="/" component={Home}/>
             <Route exact path="/shop" component={Shop}/>
             <Route exact path="/category/:category" component={Shop}/>
             <Route exact path="/salesPoints" component={StoresMap}/>
             <Route exact path="/products/:id" component={ProductScreen} />
+            <PrivateRoute path="/shipping" component={Shipping}/>
           </Switch>
         <Footer/>
       </BrowserRouter>

@@ -5,7 +5,7 @@ import { Grid, Divider } from '@material-ui/core';
 import {makeStyles } from '@material-ui/core';
 import {listProducts} from '../actions/productActions';
 import {useSelector, useDispatch } from 'react-redux';
-import Product from '../components/Product';
+import ProductCard from '../components/ProductCard';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import CheckboxList from '../components/CheckboxList';
 
@@ -56,7 +56,7 @@ const Store = (props) => {
   
   const classes = useStyles();
   const categories = products.map(x => x.category.toLowerCase());
-  const uniqueCategories = ['camote', 'betabel' , 'zanahoria' , 'jícama']
+  const uniqueCategories = ['camote', 'betabel' , 'zanahoria' , 'jicama']
   
   const capitalize = s => typeof s !== 'string' ?  '' : s.charAt(0).toUpperCase() + s.slice(1);  
 
@@ -84,13 +84,12 @@ const Store = (props) => {
           <Divider ></Divider> 
           <div className={classes.root}>
               {products.map((product) => (
-                <Product product={product} />
+                <ProductCard product={product} />
               ))}
           </div>
         </Grid>
       </Grid>
-    </Container>
-  }     
+    </Container>}     
 </React.Fragment>
 }
  
