@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const Account = () => {
+const Account = ({cartItemsCount}) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -63,7 +63,7 @@ const Account = () => {
       </Menu>
 
       <Button edge="end">
-        <Badge badgeContent={4} color="secondary">
+        <Badge badgeContent={cartItemsCount} color="secondary">
           <ShoppingCartIcon />
         </Badge>
       </Button>

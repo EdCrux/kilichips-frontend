@@ -55,6 +55,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#ff5000',
     border: '4px solid #fafafa',
     color: '#fafafa',
+  },
+  link: {
+    textDecoration: 'none',
   }
 }));
 
@@ -69,7 +72,7 @@ const BuyCard = () => {
     <Typography variant="h2" className={classes.subtitle}>
       Tentación
     </Typography>
-    <Link to="/shop">
+    <Link to="/shop" className={classes.link}>
       <Button variant="contained" size="large" className={classes.buttonBuy}>
         Comprar 
       </Button>

@@ -21,6 +21,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   container: {
     position: 'relative',
+    bottom:0,
     width: '100%',
     height: '450px',
     backgroundImage: `url(${image})`,

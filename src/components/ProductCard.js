@@ -32,7 +32,7 @@ const useStyles = makeStyles({
 
 });
 
-const Product = ({product}) => {
+const ProductCard = ({product}) => {
   const classes = useStyles();
 
   return (
@@ -67,4 +67,4 @@ const Product = ({product}) => {
 }
 
 
-export default Product;
+export default ProductCard ;

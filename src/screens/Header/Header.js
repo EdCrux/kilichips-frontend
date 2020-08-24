@@ -24,6 +24,8 @@ import {ScrollTop} from './ScrollTop';
 import MobileNavbar from './MobileNavbar';
 import Account from '../../components/Account';
 
+//Redux
+import {useSelector} from 'react-redux';
 
 
 export default function Header(props) {
@@ -39,6 +41,11 @@ export default function Header(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const cart = useSelector(state => state.cart);
+  const { cartItems } = cart;
+  const cartItemsCount = cartItems.reduce(((a, c) => a + c.qty), 0)
+ console.log(cartItemsCount)
 
   return (
     <div className={classes.root}>
@@ -106,7 +113,7 @@ export default function Header(props) {
             </Button>
             </div>
           </Hidden>
-          <Account />
+          <Account  cartItemsCount={cartItemsCount}/>
         </Toolbar>
       </AppBar>
       <Toolbar id="back-to-top-anchor" />
