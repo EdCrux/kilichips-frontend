@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles'; 
 import ProductSlider from '../components/ProductSlider';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Divider , Typography, Grid , Container, Button, TextField} from '@material-ui/core'
 import { detailsProduct } from '../actions/productActions';
