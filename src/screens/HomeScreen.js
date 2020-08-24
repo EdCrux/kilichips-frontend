@@ -17,7 +17,7 @@ const HomeScreen = () => {
       .then(resp => resp.json())
       .then(data => {
         data.map(banner => {
-          setHeroImages({name: banner.name, images: banner.images })
+          return setHeroImages({name: banner.name, images: banner.images })
         })
       })
       .catch(console.log('something went wrong'))
