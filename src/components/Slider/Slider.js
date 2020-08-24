@@ -1,17 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import hero from '../../images/kili.png';
+import React, { useState } from 'react';
 import { useStyles } from './Styles';
 import { useTheme } from '@material-ui/core';
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
-import axios from 'axios';
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const Slider = ({heroImages}) => {
-  
-  
-
   const classes = useStyles();
   const theme  = useTheme();
   const [activeStep, setActiveStep] = useState(0);
