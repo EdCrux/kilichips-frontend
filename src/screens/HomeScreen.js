@@ -13,7 +13,7 @@ const HomeScreen = () => {
   });
 
   const getHeroBanners =  () => {
-    fetch("http://localhost:3000/api/v1/banners")
+    fetch("http://192.168.1.69:3000/api/v1/banners")
       .then(resp => resp.json())
       .then(data => {
         data.map(banner => {

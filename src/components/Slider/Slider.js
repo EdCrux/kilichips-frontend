@@ -28,7 +28,7 @@ return (
       >
         {heroImages.images.map((step, index)  => (
           <div key={index}>
-            <img src={`http://localhost:3000${step}`} className={classes.img} alt={step.substring(0,2)} />
+            <img src={`http://192.168.1.69:3000${step}`} className={classes.img} alt={step.substring(0,2)} />
           </div>
         ))}
       </AutoPlaySwipeableViews>

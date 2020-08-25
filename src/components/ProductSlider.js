@@ -69,7 +69,7 @@ const ProductSlider = ({ images, rating, numReviews }) => {
         images.map((step, index) => (
           <div key={step}>
             {Math.abs(activeStep - index) <= 2 ? (
-              <img className={classes.img} src={`http://localhost:3000${step}`} alt={`productImage ${index}`} /> 
+              <img className={classes.img} src={`http://192.168.1.69:3000${step}`} alt={`productImage ${index}`} /> 
               ) : null }
           </div>
         ))

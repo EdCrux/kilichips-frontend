@@ -40,7 +40,7 @@ const ProductCard = ({product}) => {
         <Link to={`/products/${product.id}`}>
         <CardMedia
           className={classes.media}
-          image={`http://localhost:3000/${product.images[0]}`}
+          image={`http://192.168.1.69:3000/${product.images[0]}`}
           title="Contemplative Reptile"
           />
         </Link>

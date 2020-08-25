@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { theme } from '../Theme';
+import { theme } from '../../Theme';
 import { responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 import 
-  { makeStyles,
+  { 
     Container, 
     Typography, 
     Grid,
@@ -12,31 +12,10 @@ import
     TextField
   } from '@material-ui/core';
 
-import OauthButton from '../components/OauthButton';
+import OauthButton from '../../components/OauthButton';
+import { useStyles } from './Styles';
 
-const useStyles = makeStyles(()=> ({
-  root: {
-    minHeight: '90vh'
-  },
-  container: {
-    padding: '1rem'
-  },
-  signinButton: {
-    backgroundColor: '#6ECB3E',
-    width: '100%',
-    color: 'white',
-    '&:hover' :{
-      backgroundColor: '#4d8e2b'
-    }
-  },
-  title:{
-    textAlign: 'center',
-    marginTop: '2rem'
-  },
-  resetLink: {
-    textDecoration: 'none'
-  }
-}))
+
 
 let customTheme = theme;
 customTheme = responsiveFontSizes(customTheme);
@@ -108,7 +87,7 @@ const SigninScreen = (props) => {
               </Grid>
               <Grid item>
                 <Link to="/resetPassword">
-                  ¿Olvidaste tu contraseña
+                  ¿Olvidaste tu contraseña?
                 </Link>
               </Grid>
             </Grid>

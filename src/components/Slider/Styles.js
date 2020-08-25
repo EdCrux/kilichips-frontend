@@ -21,7 +21,7 @@ export const useStyles = makeStyles((theme) => ({
     transform: 'translate(-50%, -50%)',
     height: '100%',
     '@media (max-width:767px)' : {
-      height: '70vh'
+      height: '100%'
     },
     zIndex: '-500',
     background: 'linear-gradient(to right, #f12711, #f5af19)',
@@ -30,7 +30,6 @@ export const useStyles = makeStyles((theme) => ({
     display: 'block',
     overflow: 'hidden',
     width: '100%',
-    height: '50%',
     filter: 'brightness(0.60)'
     //clipPath: 'circle(64.2% at 68% -1%)'
   },
